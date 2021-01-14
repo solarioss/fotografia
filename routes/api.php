@@ -21,5 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('singup',[UsuarioController::class,'singup'])->name('crearUsuario');
 Route::post('login',[UsuarioController::class,'login'])->name('loginUsuario');
-Route::post('buscar',[RecognitionController::class,'retornarAlbum'])->name('buscarAlbum');
+Route::post('buscar',[RecognitionController::class,'retornarEvento'])->name('buscarEvento');
+Route::post('album',[RecognitionController::class,'retornarAlbum'])->name('buscarAlbum');
 

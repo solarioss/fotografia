@@ -17,15 +17,10 @@
 
 
 
-<img src="{{$qr_code}}" alt="codigo qr" >
+<img src="{{asset($imagen['codigo_qr'])}}" alt="codigo qr" >
 
 
-<input id="datepicker" width="276" />
-    <script>
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-    </script>
+
 
 </body>
 </html>

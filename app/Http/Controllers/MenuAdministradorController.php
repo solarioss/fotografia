@@ -76,14 +76,14 @@ class MenuAdministradorController extends Controller
 
         $nro=Evento::select('id')->orderBy('id', 'desc')->get();
         $nro=$nro[0]['id'];
-        Evento::find($nro)->update(['codigo_qr'=>'../public/qr/'.$nro.'.svg']);
+        Evento::find($nro)->update(['codigo_qr'=>'storage/qr/'.$nro.'.svg']);
 
 
         
-        $qr_code=QrCode::format('png')->generate($nro,'../public/qr/'.$nro.'.png');
-
+        $qr_code=QrCode::format('svg')->generate($nro,'../public/storage/qr/'.$nro.'.svg');
+        $imagen=Evento::select('codigo_qr')->where('id',$nro)->first();
 
      
-        return view('prueba',compact('qr_code','nro'));
+        return view('prueba',compact('qr_code','imagen'));
     }
 }

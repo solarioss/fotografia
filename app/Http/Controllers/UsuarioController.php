@@ -55,7 +55,8 @@ class UsuarioController extends Controller
         ['email'=>'email|required|string',
         'password'=>'required|string']);
 
-        $usuario=Usuario::where('email',$request->email)->first();
+
+        $usuario=Usuario::select('id','nombre','email','password','sexo','edad','foto1','foto2','foto3')->where('email',$request->email)->first();
         
         if (Auth::guard('usuario')->attempt($credentials)){ 
             return response()->json($usuario,200);
