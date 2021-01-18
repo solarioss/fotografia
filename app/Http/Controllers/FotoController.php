@@ -19,7 +19,6 @@ class FotoController extends Controller
                 'id_evento'=>$request->evento,
             ];
 
-            
     
             if ($request->has('imagen')) {
                 $datos['url'] = 'storage/'.$request->imagen->store('fotos');
@@ -28,7 +27,6 @@ class FotoController extends Controller
             $producto=Foto::create($datos);
     
             return back()->withInput();
-            
         
     }
 

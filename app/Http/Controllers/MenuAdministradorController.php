@@ -76,8 +76,8 @@ class MenuAdministradorController extends Controller
 
         $nro=Evento::select('id')->orderBy('id', 'desc')->get();
         $nro=$nro[0]['id'];
-        Evento::find($nro)->update(['codigo_qr'=>'storage/qr/'.$nro.'.svg']);
 
+        Evento::find($nro)->update(['codigo_qr'=>'storage/qr/'.$nro.'.svg']);
 
         
         $qr_code=QrCode::format('svg')->generate($nro,'../public/storage/qr/'.$nro.'.svg');

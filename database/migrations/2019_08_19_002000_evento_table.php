@@ -15,9 +15,9 @@ class EventoTable extends Migration
     {
         Schema::create('evento', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 80)->unique();
-            $table->string('cliente', 80)->unique();     
-            $table->string('correo', 80)->unique();
+            $table->string('nombre', 80);
+            $table->string('cliente', 80);  
+            $table->string('correo', 80);
             $table->unsignedBigInteger('ci');
             $table->unsignedBigInteger('id_negocio');
             $table->date('fecha');

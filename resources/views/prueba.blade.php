@@ -1,26 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+@extends ('helpers/navbar')
+
+@section('titulo','Codigo' )
+
+@section('contenido')
+
+
+<style>
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centrado{
+margin-left: auto;
+  margin-right: auto; 
+}
+
+</style>
+
+     
     
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-</head>
-<body>
-<br>
+<br><br><br><br><br><br><br><br>
 
 
+    <div class="container">
+    <div ><h1>Codigo QR</h1></div>
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">        
+                        <table id="reporte" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr >
+                                <th class="centrado">Codigo</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>                        
+                            <tr>           
+                            <td class="centrado"><img src="{{asset($imagen['codigo_qr'])}}" alt="codigo qr" height="300%"></td>                                                     
+                            </tr>                       
+                        </tbody>  
+                       </table>                  
+                    </div>
+                </div>
+        </div>  
+        <button onclick="window.print()">Imprimir</button>
+    </div>    
+    
 
 
-<img src="{{asset($imagen['codigo_qr'])}}" alt="codigo qr" >
 
 
 
 
-</body>
-</html>
+

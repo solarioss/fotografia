@@ -86,26 +86,19 @@ body {
                 <!-- form start -->
                   <div class="card-body">
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> Verifica los datos.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-            
+                  
+                  @if(!empty($eventos[0])) 
                     <form action="{{ route('subirFoto') }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <label class="label">Empresa</label>
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="evento">                                    
+                                <select name="evento">  
+                                                                    
                                     <option value="{{$eventos[0]['id']}}" selected> <b>fecha:{{$eventos[0]['fecha']}}</b> / nombre:{{$eventos[0]['nombre']}} </option>
                                     @foreach ($eventos as $evento)
                                     <option value="{{$evento['id']}}" ><b>fecha:{{$evento['fecha']}}</b> /nombre:{{$evento['nombre']}} </option>
                                     @endforeach
+                                  
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
@@ -127,6 +120,10 @@ body {
                             </div>
                         </div>
                     </form>
+                  @endif  
+                  @if(empty($eventos[0])) 
+                    <h4>No hay eventos disponibles </h4>
+                  @endif  
                   </div>
                   <!-- /.card-body -->
               </div>
@@ -135,29 +132,27 @@ body {
         </div>
         </div>
 
-    <script>
+        <script>
         //Funcion de JS que valida el archivo ingresado al input. Formato y Tamaño.
-        function validarFile(all)
-        {
+        function validarFile(all) {
             //EXTENSIONES Y TAMANO PERMITIDO.
-            var extensiones_permitidas = [".png", ".bmp", ".jpg", ".jpeg", ".pdf", ".doc", ".docx", ".gif"];
+            var extensiones_permitidas = [".png", ".bmp", ".jpeg"];
             var tamano = 8; // EXPRESADO EN MB.
             var rutayarchivo = all.value;
             var ultimo_punto = all.value.lastIndexOf(".");
             var extension = rutayarchivo.slice(ultimo_punto, rutayarchivo.length);
-            if(extensiones_permitidas.indexOf(extension) == -1)
-            {
+            if (extensiones_permitidas.indexOf(extension) == -1) {
                 alert("Extensión de archivo no valida");
                 document.getElementById(all.id).value = "";
                 return; // Si la extension es no válida ya no chequeo lo de abajo.
             }
-            if((all.files[0].size / 1048576) > tamano)
-            {
-                alert("El archivo no puede superar los "+tamano+"MB");
+            if ((all.files[0].size / 1048576) > tamano) {
+                alert("El archivo no puede superar los " + tamano + "MB");
                 document.getElementById(all.id).value = "";
                 return;
             }
         }
+
     </script>
 
 @endsection
